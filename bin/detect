@@ -1,0 +1,8 @@
+
+#!/bin/sh
+
+if [ -f "$1/portal_server/Cargo.toml"]; then
+  echo "Ditto portal" && exit 0
+else
+  echo "no" && exit 1
+fi
