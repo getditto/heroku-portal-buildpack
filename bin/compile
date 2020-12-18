@@ -81,18 +81,6 @@ export CARGO_TARGET_DIR="$CACHE_DIR/target"
 #export RUST_LOG="cargo::sources::git=debug"
 # To debug compiler and linking issues, add `--verbose`.
 echo "-----> Building application using Cargo"
-echo "-----> Avaiblable env varibles"
-env
-echo "------------------------------"
-echo "-----> Evaluating the PR number for review apps. PR Number ${HEROKU_PR_NUMBER}"
-PRODUCTION_ENDPOINT="portal.ditto.live"
-
-# Set the correct host name
-if [ -z "$HEROKU_PR_NUMBER" ]; then
-    echo "window._env_ = { API_HOST: '${PRODUCTION_ENDPOINT}'}" > $SERVER_DIR/www/env-config.js
-else
-    echo "window._env_ = { API_HOST: 'ditto-portal-pr-${HEROKU_PR_NUMBER}.herokuapp.com'}" > $SERVER_DIR/www/env-config.js
-fi
 
 echo "Environment config file"
 cat $SERVER_DIR/www/env-config.js
